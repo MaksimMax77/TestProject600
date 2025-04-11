@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
+  m_Name: RemoteConfigDataStoreAsset
+  m_EditorClassIdentifier: 
+  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"59e438ef-f2c3-4611-b25e-c011c795aa78\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"levelConfigurations\",\r\n      \"type\":
+    \"json\",\r\n      \"schemaId\": null,\r\n      \"value\": {\r\n        \"levelConfigurations\":
+    [\r\n          {\r\n            \"expectedValue\": \"\u041F\u0440\u0438\u0432\u0435\u0442\",\r\n           
+    \"clusters\": [\r\n              \"\u041F\u0440\u0438\",\r\n              \"\u0432\u0435\u0442\"\r\n           
+    ]\r\n          },\r\n          {\r\n            \"expectedValue\": \"\u041F\u043E\u043A\u0430\",\r\n           
+    \"clusters\": [\r\n              \"\u041F\u043E\",\r\n              \"\u043A\u0430\"\r\n           
+    ]\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  }\r\n]"
+  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"59e438ef-f2c3-4611-b25e-c011c795aa78\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"levelConfigurations\",\r\n      \"type\":
+    \"json\",\r\n      \"schemaId\": null,\r\n      \"value\": {\r\n        \"levelConfigurations\":
+    [\r\n          {\r\n            \"expectedValue\": \"\u041F\u0440\u0438\u0432\u0435\u0442\",\r\n           
+    \"clusters\": [\r\n              \"\u041F\u0440\u0438\",\r\n              \"\u0432\u0435\u0442\"\r\n           
+    ]\r\n          },\r\n          {\r\n            \"expectedValue\": \"\u041F\u043E\u043A\u0430\",\r\n           
+    \"clusters\": [\r\n              \"\u041F\u043E\",\r\n              \"\u043A\u0430\"\r\n           
+    ]\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  }\r\n]"
+  _environments: "[\r\n  {\r\n    \"projectId\": \"3cc4e796-a39f-4c2b-970c-72f164b15caa\",\r\n   
+    \"name\": \"production\",\r\n    \"id\": \"2af3e491-8cc1-4c43-bf17-5883e8a99dc5\",\r\n   
+    \"isDefault\": true,\r\n    \"createdAt\": \"2025-04-09T15:05:03Z\",\r\n    \"updatedAt\":
+    \"2025-04-09T15:05:03Z\"\r\n  }\r\n]"
