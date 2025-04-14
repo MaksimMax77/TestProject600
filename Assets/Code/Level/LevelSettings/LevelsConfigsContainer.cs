@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 
-namespace Code.LevelSettings
+namespace Code.Level.LevelSettings
 {
     [Serializable]
-    public class LevelsConfigsInfo
+    public class LevelsConfigsContainer
     {
         public List<LevelConfiguration> levelConfigurations;
     }
