@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af9f0f6aa49dab34cb759d80c801c522, type: 3}
+  m_Name: LevelCreatorSettings
+  m_EditorClassIdentifier: 
+  _wordFieldViewPrefab: {fileID: 4313747667637321180, guid: a81d7323a0a1dff4b93577bf63ea043f, type: 3}
