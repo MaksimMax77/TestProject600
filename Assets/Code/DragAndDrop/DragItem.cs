@@ -7,20 +7,33 @@ namespace Code.DragAndDrop
     {
         [SerializeField] private RectTransform _rectTransform;
         [SerializeField] private CanvasGroup _canvasGroup;
-        [SerializeField] private Canvas _canvas;
-        [SerializeField] private Transform _dragField;
-
+        private Canvas _canvas;
+        private Transform _dragField;
+        private bool _initialized;
         private Transform _lastParent;
         private bool _isDragging;
 
-        private void Awake()
+        public void Init(Transform startParent, Canvas canvas, Transform dragField)
         {
-            SetLastParent(_rectTransform.parent);
+            SetLastParent(startParent);
+            _canvas = canvas;
+            _dragField = dragField;
+            _initialized = true;
         }
 
         public void SetLastParent(Transform parent)
         {
             _lastParent = parent;
+        }
+
+        public void TryReturnOnLastParent()
+        {
+            if (!_initialized || _isDragging || transform.parent == _lastParent)
+            {
+                return;
+            }
+
+            _rectTransform.SetParent(_lastParent);
         }
 
         public void OnBeginDrag(PointerEventData eventData)
@@ -39,16 +52,6 @@ namespace Code.DragAndDrop
         {
             _isDragging = false;
             _canvasGroup.blocksRaycasts = true;
-        }
-
-        private void Update()
-        {
-            if (_isDragging || transform.parent == _lastParent)
-            {
-                return;
-            }
-
-            _rectTransform.SetParent(_lastParent);
         }
     }
 }

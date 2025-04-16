@@ -9,12 +9,12 @@ namespace Code.Level.GameField
 
         private void Awake()
         {
-            _dropSlot.DragItemDropped += OnDragItemDropped;
+            /*_dropSlot.DragItemDropped += OnDragItemDropped;*/
         }
 
         private void OnDestroy()
         {
-            _dropSlot.DragItemDropped -= OnDragItemDropped;
+            /*_dropSlot.DragItemDropped -= OnDragItemDropped;*/
         }
 
         private void OnDragItemDropped(DragItem dragItem)

@@ -7,7 +7,9 @@ namespace Code.Level.LevelCreation
     public class LevelCreatorSettings : ScriptableObject
     {
         [SerializeField] private WordFieldView _wordFieldViewPrefab;
+        [SerializeField] private CharactersClusterView _charactersClusterViewPrefab;
         
         public WordFieldView WordFieldViewPrefab => _wordFieldViewPrefab;
+        public CharactersClusterView CharactersClusterViewPrefab => _charactersClusterViewPrefab;
     }
 }

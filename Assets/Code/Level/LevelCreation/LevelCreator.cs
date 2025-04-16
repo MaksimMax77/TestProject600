@@ -7,8 +7,10 @@ namespace Code.Level.LevelCreation
 {
     public class LevelCreator : IDisposable
     {
+        public event Action<CharactersClusterView> CharactersClusterViewCreated;
         private LevelsConfigurationsLoader _levelsConfigurationsLoader;
         private WordFieldView _wordFieldViewPrefab;
+        private CharactersClusterView _charactersClusterViewPrefab;
         private GameFieldView _gameFieldView;
         private int _currentLevel;
 
@@ -17,6 +19,7 @@ namespace Code.Level.LevelCreation
         {
             _levelsConfigurationsLoader = levelsConfigurationsLoader;
             _wordFieldViewPrefab = levelCreatorSettings.WordFieldViewPrefab;
+            _charactersClusterViewPrefab = levelCreatorSettings.CharactersClusterViewPrefab;
             _gameFieldView = gameFieldView;
             _levelsConfigurationsLoader.LevelsConfigurationsLoaded += Create;
         }
@@ -28,8 +31,9 @@ namespace Code.Level.LevelCreation
 
         private void Create(LevelsConfigsContainer levelsConfigsContainer)
         {
-           var levelConfiguration = levelsConfigsContainer.levelConfigurations[_currentLevel];
+            var levelConfiguration = levelsConfigsContainer.levelConfigurations[_currentLevel];
             CreateWordsFields(levelConfiguration);
+            CreateClusters(levelConfiguration);
         }
 
         private void CreateWordsFields(LevelConfiguration levelConfiguration)
@@ -42,6 +46,21 @@ namespace Code.Level.LevelCreation
                 var wordField = new WordField();
                 wordField.SetWordConfiguration(words[i]);
                 wordField.SetWordFieldView(wordFieldView);
+            }
+        }
+
+        private void CreateClusters(LevelConfiguration levelConfiguration)
+        {
+            var words = levelConfiguration.words;
+            for (int i = 0, count = words.Count; i < count; ++i)
+            {
+                var wordConfiguration = words[i];
+                
+                for (int j = 0, countj = wordConfiguration.clusters.Length; j < countj; ++j)
+                {
+                    var view = Object.Instantiate(_charactersClusterViewPrefab, _gameFieldView.ClustersRoot);
+                    CharactersClusterViewCreated?.Invoke(view);
+                }
             }
         }
     }
