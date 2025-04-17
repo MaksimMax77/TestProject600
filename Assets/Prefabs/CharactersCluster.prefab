@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 3540916192786377598}
   - component: {fileID: 8258207911498981581}
   m_Layer: 5
-  m_Name: CharactersClusterView
+  m_Name: CharactersCluster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

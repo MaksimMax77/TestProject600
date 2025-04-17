@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: LevelCreatorSettings
   m_EditorClassIdentifier: 
   _wordFieldViewPrefab: {fileID: 4313747667637321180, guid: a81d7323a0a1dff4b93577bf63ea043f, type: 3}
-  _charactersClusterViewPrefab: {fileID: -3265698702591413549, guid: 276808812e93a0144a9cacd72385a35d, type: 3}
+  charactersClusterPrefab: {fileID: -3265698702591413549, guid: 276808812e93a0144a9cacd72385a35d, type: 3}

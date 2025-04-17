@@ -12,12 +12,11 @@ namespace Code.Update
         public void Init(List<IUpdatable> updatableObjects)
         {
             _updatableObjects = updatableObjects;
-            Debug.LogError(_updatableObjects.Count);
         }
 
         private void Update()
         {
-            for (int i = 0; i < _updatableObjects.Count; i++)
+            for (int i = 0, len = _updatableObjects.Count; i < len; ++i)
             {
                 _updatableObjects[i].ObjUpdate();
             }

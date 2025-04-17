@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -5,6 +6,7 @@ namespace Code.DragAndDrop
 {
     public class DragItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
     {
+        public event Action<DragItem> BeginDrag;
         [SerializeField] private RectTransform _rectTransform;
         [SerializeField] private CanvasGroup _canvasGroup;
         private Canvas _canvas;
@@ -41,6 +43,7 @@ namespace Code.DragAndDrop
             _isDragging = true;
             _canvasGroup.blocksRaycasts = false;
             transform.SetParent(_dragField);
+            BeginDrag?.Invoke(this);
         }
 
         public void OnDrag(PointerEventData eventData)

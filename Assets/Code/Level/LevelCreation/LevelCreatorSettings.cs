@@ -1,4 +1,5 @@
-using Code.Level.GameField;
+using Code.Level.GameField.Cluster;
+using Code.Level.GameField.Word;
 using UnityEngine;
 
 namespace Code.Level.LevelCreation
@@ -7,9 +8,9 @@ namespace Code.Level.LevelCreation
     public class LevelCreatorSettings : ScriptableObject
     {
         [SerializeField] private WordFieldView _wordFieldViewPrefab;
-        [SerializeField] private CharactersClusterView _charactersClusterViewPrefab;
+        [SerializeField] private CharactersCluster charactersClusterPrefab;
         
         public WordFieldView WordFieldViewPrefab => _wordFieldViewPrefab;
-        public CharactersClusterView CharactersClusterViewPrefab => _charactersClusterViewPrefab;
+        public CharactersCluster CharactersClusterPrefab => charactersClusterPrefab;
     }
 }

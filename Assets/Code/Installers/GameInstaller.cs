@@ -26,7 +26,7 @@ namespace Code.Installers
             Container.BindInterfacesAndSelfTo<LevelsConfigurationsLoader>().AsSingle();   
             Container.BindInstance(_levelCreatorSettings).AsSingle();
             Container.BindInstance(_gameFieldView).AsSingle();
-            Container.Bind<LevelCreator>().AsSingle();
+            Container.BindInterfacesAndSelfTo<LevelCreator>().AsSingle();
             Container.BindInstance(_canvasComponentsContainer);
             Container.BindInterfacesAndSelfTo<DragItemsControl>().AsSingle().NonLazy();
         }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Code.Level.GameField;
+using Code.Level.GameField.Cluster;
 using Code.Level.LevelCreation;
 using Code.Update;
 
@@ -24,9 +25,9 @@ namespace Code.DragAndDrop
             _levelCreator.CharactersClusterViewCreated -= OnCharactersClusterViewCreated;
         }
         
-        private void OnCharactersClusterViewCreated(CharactersClusterView charactersClusterView)
+        private void OnCharactersClusterViewCreated(CharactersCluster charactersCluster)
         {
-            var dragItem = charactersClusterView.GetComponent<DragItem>();
+            var dragItem = charactersCluster.GetComponent<DragItem>();
             if (dragItem == null)
             {
                 return;
