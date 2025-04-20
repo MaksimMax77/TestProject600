@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Code.Level.GameField;
 using Code.Level.GameField.Cluster;
-using Code.Level.LevelCreation;
+using Code.Level.GameField.Containers;
 using Code.Update;
 
 namespace Code.DragAndDrop
@@ -10,22 +9,23 @@ namespace Code.DragAndDrop
     public class DragItemsControl : IDisposable, IUpdatable
     {
         private List<DragItem> _dragItems = new();
-        private LevelCreator _levelCreator;
+        private CharactersClustersContainer _charactersClustersContainer;
         private CanvasComponentsContainer _canvasComponentsContainer;
         
-        public DragItemsControl(LevelCreator levelCreator, CanvasComponentsContainer canvasComponentsContainer)
+        public DragItemsControl(CharactersClustersContainer charactersClustersContainer,
+            CanvasComponentsContainer canvasComponentsContainer)
         {
-            _levelCreator = levelCreator;
+            _charactersClustersContainer = charactersClustersContainer;
             _canvasComponentsContainer = canvasComponentsContainer;
-            _levelCreator.CharactersClusterViewCreated += OnCharactersClusterViewCreated;
+            _charactersClustersContainer.CharactersClusterCreated += OnCharactersClusterCreated;
         }
         
         public void Dispose()
         {
-            _levelCreator.CharactersClusterViewCreated -= OnCharactersClusterViewCreated;
+            _charactersClustersContainer.CharactersClusterCreated -= OnCharactersClusterCreated;
         }
         
-        private void OnCharactersClusterViewCreated(CharactersCluster charactersCluster)
+        private void OnCharactersClusterCreated(CharactersCluster charactersCluster)
         {
             var dragItem = charactersCluster.GetComponent<DragItem>();
             if (dragItem == null)

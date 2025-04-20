@@ -30,7 +30,6 @@ namespace Code.Level.LevelSettings
             var configsInfo = new LevelsConfigsContainer();
             JsonUtility.FromJsonOverwrite(jsonCubeString, configsInfo);  
             LevelsConfigurationsLoaded?.Invoke(configsInfo);
-            Debug.Log(configsInfo);//todo to remove 
         }
     }
 }

@@ -1,76 +1,82 @@
 using System;
 using System.Collections.Generic;
-using Code.Level.GameField;
-using Code.Level.GameField.Cluster;
-using Code.Level.GameField.Word;
+using Code.Level.GameField.Containers;
 using Code.Level.LevelSettings;
-using Object = UnityEngine.Object;
+using Code.Windows;
 
 namespace Code.Level.LevelCreation
 {
     public class LevelCreator : IDisposable
     {
-        public event Action<CharactersCluster> CharactersClusterViewCreated;
         private LevelsConfigurationsLoader _levelsConfigurationsLoader;
-        private WordFieldView _wordFieldViewPrefab;
-        private CharactersCluster _charactersClusterPrefab;
-        private GameFieldView _gameFieldView;
-        private List<WordField> _wordFields = new();
-        private int _currentLevel;
+        private int _currentLevel; 
+        private ResultWindow _resultWindow;
+        private List<LevelConfiguration> _levelConfigurations;
+        private WordFieldsContainer _wordFieldsContainer;
+        private CharactersClustersContainer _charactersClustersContainer;
 
-        public LevelCreator(LevelsConfigurationsLoader levelsConfigurationsLoader,
-            LevelCreatorSettings levelCreatorSettings, GameFieldView gameFieldView)
+        public LevelCreator(
+            LevelsConfigurationsLoader levelsConfigurationsLoader, 
+            WordFieldsContainer wordFieldsContainer,
+            CharactersClustersContainer charactersClustersContainer, 
+            ResultWindow resultWindow)
         {
-            _levelsConfigurationsLoader = levelsConfigurationsLoader;
-            _wordFieldViewPrefab = levelCreatorSettings.WordFieldViewPrefab;
-            _charactersClusterPrefab = levelCreatorSettings.CharactersClusterPrefab;
-            _gameFieldView = gameFieldView;
-            _levelsConfigurationsLoader.LevelsConfigurationsLoaded += Create;
+            _levelsConfigurationsLoader = levelsConfigurationsLoader; 
+            _wordFieldsContainer = wordFieldsContainer;
+            _charactersClustersContainer = charactersClustersContainer;
+            _resultWindow = resultWindow;
+            _levelsConfigurationsLoader.LevelsConfigurationsLoaded += OnLevelsConfigurationsLoaded;
+            _resultWindow.NextLevelButtonClicked += OnNextLevelClicked;
+            _resultWindow.MainMenuButtonClicked += LoadFirstLevel;
         }
 
         public void Dispose()
         {
-            _levelsConfigurationsLoader.LevelsConfigurationsLoaded -= Create;
+            _levelsConfigurationsLoader.LevelsConfigurationsLoaded -= OnLevelsConfigurationsLoaded;
+            _resultWindow.NextLevelButtonClicked -= OnNextLevelClicked;
+            _resultWindow.MainMenuButtonClicked -= LoadFirstLevel;
+        }
 
-            for (int i = 0, count = _wordFields.Count; i < count; ++i)
+        private void LoadFirstLevel()
+        {
+            _currentLevel = 0;
+            PutElementsToPools();
+            Create();
+        }
+        
+        private void OnLevelsConfigurationsLoaded(LevelsConfigsContainer levelsConfigsContainer)
+        {
+            _levelConfigurations = levelsConfigsContainer.levelConfigurations;
+            Create();
+        }
+        
+        private void OnNextLevelClicked()
+        {
+            IncrementCurrentLevel();
+            PutElementsToPools();
+            Create();
+        }
+
+        private void IncrementCurrentLevel()
+        {
+            ++_currentLevel;
+            if (_currentLevel >= _levelConfigurations.Count)
             {
-                _wordFields[i].Dispose();
+                _currentLevel = 0;
             }
         }
 
-        private void Create(LevelsConfigsContainer levelsConfigsContainer)
+        private void PutElementsToPools()
         {
-            var levelConfiguration = levelsConfigsContainer.levelConfigurations[_currentLevel];
-            CreateWordsFields(levelConfiguration);
-            CreateClusters(levelConfiguration);
+            _wordFieldsContainer.Reset();
+            _charactersClustersContainer.Reset();
         }
 
-        private void CreateWordsFields(LevelConfiguration levelConfiguration)
+        private void Create()
         {
-            var words = levelConfiguration.words;
-            
-            for (int i = 0, len = words.Count; i < len; ++i)
-            {
-                var wordFieldView = Object.Instantiate(_wordFieldViewPrefab, _gameFieldView.WordsRoot);
-                var wordField = new WordField(words[i], wordFieldView);
-                _wordFields.Add(wordField);
-            }
-        }
-
-        private void CreateClusters(LevelConfiguration levelConfiguration)
-        {
-            var words = levelConfiguration.words;
-            for (int i = 0, count = words.Count; i < count; ++i)
-            {
-                var clusters = words[i].clusters;
-                
-                for (int j = 0, countj = clusters.Length; j < countj; ++j)
-                {
-                    var view = Object.Instantiate(_charactersClusterPrefab, _gameFieldView.ClustersRoot);
-                    view.SetCharactersAndText(clusters[j]);
-                    CharactersClusterViewCreated?.Invoke(view);
-                }
-            }
+            var levelConfiguration = _levelConfigurations[_currentLevel];
+            _wordFieldsContainer.Create(levelConfiguration);
+            _charactersClustersContainer.Create(levelConfiguration);
         }
     }
 }

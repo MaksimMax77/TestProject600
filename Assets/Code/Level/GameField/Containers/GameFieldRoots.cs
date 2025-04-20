@@ -1,15 +1,13 @@
 using UnityEngine;
 
-namespace Code.Level.GameField
+namespace Code.Level.GameField.Containers
 {
-    public class GameFieldView : MonoBehaviour
+    public class GameFieldRoots : MonoBehaviour
     {
         [SerializeField] private Transform _wordsRoot;
         [SerializeField] private Transform _clustersRoot;
-        [SerializeField] private Transform _dragField; 
         
         public Transform WordsRoot => _wordsRoot;
         public Transform ClustersRoot => _clustersRoot;
-        public Transform DragField => _dragField;
     }
 }
