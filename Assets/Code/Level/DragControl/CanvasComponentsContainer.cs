@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.DragAndDrop
+namespace Code.Level.DragControl
 {
     public class CanvasComponentsContainer : MonoBehaviour
     {

@@ -1,4 +1,4 @@
-namespace Code.Update
+namespace Code.Core.Update
 {
     public interface IUpdatable 
     {

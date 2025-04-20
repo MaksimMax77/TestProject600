@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using Code.Core.Update;
+using Code.DragAndDrop;
 using Code.Level.GameField.Cluster;
 using Code.Level.GameField.Containers;
-using Code.Update;
 
-namespace Code.DragAndDrop
+namespace Code.Level.DragControl
 {
     public class DragItemsControl : IDisposable, IUpdatable
     {

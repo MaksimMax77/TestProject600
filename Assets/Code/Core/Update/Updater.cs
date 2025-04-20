@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Update
+namespace Code.Core.Update
 {
     public class Updater : MonoBehaviour
     {

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Code.Windows
+namespace Code.UI.Windows
 {
     public class GameWindow : Window
     {

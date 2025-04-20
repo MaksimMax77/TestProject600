@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.Pools
+namespace Code.Core.Pools
 {
     public class MonoBehaviourPool<T> : ObjectPool<T> where T : MonoBehaviour
     {

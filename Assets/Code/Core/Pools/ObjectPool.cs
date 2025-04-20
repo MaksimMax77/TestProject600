@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Code.Pools
+namespace Code.Core.Pools
 {
     public abstract class ObjectPool<T>
     {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Code.Level.GameField.Containers;
 using Code.Level.LevelSettings;
-using Code.Windows;
+using Code.UI.Windows;
 
 namespace Code.Level.LevelCreation
 {

@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
+using Code.Core.Pools;
 using Code.Level.GameField.Cluster;
 using Code.Level.LevelSettings;
-using Code.Pools;
-using Code.Windows;
 using UnityEngine;
 
 namespace Code.Level.GameField.Containers

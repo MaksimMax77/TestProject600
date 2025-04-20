@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.Windows
+namespace Code.UI.Windows
 {
     public class Window : MonoBehaviour
     {

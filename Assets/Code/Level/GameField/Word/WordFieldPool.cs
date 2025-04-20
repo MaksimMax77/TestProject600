@@ -1,4 +1,4 @@
-using Code.Pools;
+using Code.Core.Pools;
 using UnityEngine;
 
 namespace Code.Level.GameField.Word
