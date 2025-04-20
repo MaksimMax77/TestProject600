@@ -1,3 +1,4 @@
+using Code.Core.Scene;
 using Code.Core.Update;
 using Code.DragAndDrop;
 using Code.Level.DragControl;
@@ -8,6 +9,7 @@ using Code.Level.LevelSettings;
 using Code.RemoteConfigLoad;
 using Code.UI.Windows;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Code.Installers
@@ -19,7 +21,7 @@ namespace Code.Installers
         [SerializeField] private LevelsConfigurationsName _levelsConfigurationsName;
         [SerializeField] private WordFieldsContainerSettings _wordFieldsContainerSettings;
         [SerializeField] private CharactersClustersContainerSettings _charactersClustersContainerSettings;
-        [SerializeField] private GameFieldRoots _gameFieldRoots;
+        [FormerlySerializedAs("_gameFieldRoots")] [SerializeField] private SceneObjectsRoots sceneObjectsRoots;
         [SerializeField] private SettingsWindow _settingsWindow;
         [SerializeField] private GameWindow _gameWindow;
         [SerializeField] private StartMenuWindow _startMenuWindow;
@@ -29,7 +31,7 @@ namespace Code.Installers
         {
             Container.BindInstance(_updater).AsSingle();
             Container.BindInstance(_canvasComponentsContainer).AsSingle();
-            Container.BindInstance(_gameFieldRoots).AsSingle();
+            Container.BindInstance(sceneObjectsRoots).AsSingle();
             Container.BindInstance(_settingsWindow).AsSingle();
             Container.BindInstance(_gameWindow).AsSingle();
             Container.BindInstance(_startMenuWindow).AsSingle();

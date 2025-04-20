@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Code.Core.Scene;
 using Code.Level.GameField.Word;
 using Code.Level.LevelSettings;
 using UnityEngine;
@@ -14,12 +15,13 @@ namespace Code.Level.GameField.Containers
         private Transform _creationParent;
         private List<WordField> _wordFields = new();
 
-        public WordFieldsContainer(WordFieldsContainerSettings settings, GameFieldRoots gameFieldRoots)
+        public WordFieldsContainer(WordFieldsContainerSettings settings, SceneObjectsRoots sceneObjectsRoots)
         {
             _wordFieldViewPrefab = settings.WordFieldViewPrefab;
-            _creationParent = gameFieldRoots.WordsRoot;
+            _creationParent = sceneObjectsRoots.WordsRoot;
             _wordFieldPool = new WordFieldPool();
             _wordFieldPool.SetViewPrefab(_wordFieldViewPrefab);
+            _wordFieldPool.SetParent(sceneObjectsRoots.PooledItemsRoot);
             _wordFieldPool.Create();
         }
         

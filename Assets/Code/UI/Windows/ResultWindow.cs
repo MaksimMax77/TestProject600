@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Code.Core.Pools;
+using Code.Core.Scene;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,9 +22,10 @@ namespace Code.UI.Windows
         private List<TMP_Text> _texts = new();
 
         [Inject]
-        public void Initialize(StartMenuWindow startMenuWindow)
+        public void Initialize(StartMenuWindow startMenuWindow, SceneObjectsRoots sceneObjectsRoots)
         {
             _textPool = new MonoBehaviourPool<TMP_Text>();
+            _textPool.SetParent(sceneObjectsRoots.PooledItemsRoot);
             _textPool.SetPrefab(_wordPrefab);
             _textPool.Create();
             _startMenuWindow = startMenuWindow;

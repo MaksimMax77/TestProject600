@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Code.Core.Pools;
+using Code.Core.Scene;
 using Code.Level.GameField.Cluster;
 using Code.Level.LevelSettings;
 using UnityEngine;
@@ -14,12 +15,15 @@ namespace Code.Level.GameField.Containers
         private MonoBehaviourPool<CharactersCluster> _charactersClusterPool;
         private List<CharactersCluster> _charactersClusters = new();
 
-        public CharactersClustersContainer(CharactersClustersContainerSettings charactersClustersContainerSettings, GameFieldRoots gameFieldRoots)
+        public CharactersClustersContainer(
+            CharactersClustersContainerSettings charactersClustersContainerSettings,
+            SceneObjectsRoots sceneObjectsRoots)
         {
             _charactersClusterPool = new MonoBehaviourPool<CharactersCluster>();
+            _charactersClusterPool.SetParent(sceneObjectsRoots.PooledItemsRoot);
             _charactersClusterPool.SetPrefab(charactersClustersContainerSettings.CharactersClusterPrefab);
             _charactersClusterPool.Create();
-            _parent = gameFieldRoots.ClustersRoot;
+            _parent = sceneObjectsRoots.ClustersRoot;
         }
 
         public void Reset()

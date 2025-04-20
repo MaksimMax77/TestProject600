@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Code.Core.Pools
 {
@@ -28,12 +29,25 @@ namespace Code.Core.Pools
             _pooled.Remove(item);
             return item;
         }
-        
-        protected abstract T CreateNewItem();
+
+        protected virtual T CreateNewItem()
+        {
+            return default(T);
+        }
 
         public virtual void ReturnToPool(T item)
         {
             _pooled.Add(item);
+        }
+    }
+
+    public abstract class ObjectPoolWithParent<T> : ObjectPool<T>
+    {
+        protected Transform _parent;
+
+        public void SetParent(Transform parent)
+        {
+            _parent = parent;
         }
     }
 }

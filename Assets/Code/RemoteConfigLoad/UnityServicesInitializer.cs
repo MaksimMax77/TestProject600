@@ -1,5 +1,5 @@
 using System;
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using UnityEngine;
@@ -24,7 +24,7 @@ namespace Code.RemoteConfigLoad
             }
         }
 
-        private async Task InitializeRemoteConfigAsync()
+        private async UniTask InitializeRemoteConfigAsync()
         {
             await UnityServices.InitializeAsync();
 

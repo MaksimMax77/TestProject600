@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.Level.GameField.Word
 {
-    public class WordFieldPool : ObjectPool<WordField>
+    public class WordFieldPool : ObjectPoolWithParent<WordField>
     {
         private WordFieldView _wordFieldViewPrefab;
 
@@ -21,7 +21,7 @@ namespace Code.Level.GameField.Word
         {
             base.ReturnToPool(item);
             item.WordFieldView.gameObject.SetActive(false);
-            item.WordFieldView.transform.SetParent(null);
+            item.WordFieldView.transform.SetParent(_parent);
         }
 
         public override WordField Get()

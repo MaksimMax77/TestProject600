@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace Code.Core.Pools
 {
-    public class MonoBehaviourPool<T> : ObjectPool<T> where T : MonoBehaviour
+    public class MonoBehaviourPool<T> : ObjectPoolWithParent<T> where T : MonoBehaviour
     {
-        T _prefab;
+        protected T _prefab;
         
         public void SetPrefab(T prefab)
         {
@@ -20,7 +20,7 @@ namespace Code.Core.Pools
         {
             base.ReturnToPool(item);
             item.gameObject.SetActive(false);
-            item.transform.parent = null;
+            item.transform.SetParent(_parent);
         }
 
         public override T Get()

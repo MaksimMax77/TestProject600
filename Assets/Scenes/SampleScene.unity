@@ -896,7 +896,7 @@ MonoBehaviour:
   _levelsConfigurationsName: {fileID: 11400000, guid: 1c28d4aec7804af498c285835c33943f, type: 2}
   _wordFieldsContainerSettings: {fileID: 11400000, guid: 3822ddf4c1a30574a851971bf476b256, type: 2}
   _charactersClustersContainerSettings: {fileID: 11400000, guid: 59ecc8b553a374a45ac3521cb76cb685, type: 2}
-  _gameFieldRoots: {fileID: 1535450707}
+  sceneObjectsRoots: {fileID: 1535450707}
   _settingsWindow: {fileID: 1300724854}
   _gameWindow: {fileID: 0}
   _startMenuWindow: {fileID: 1734582642}
@@ -2722,6 +2722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wordsRoot: {fileID: 6204187451642044613}
   _clustersRoot: {fileID: 140607231459208588}
+  _pooledItemsRoot: {fileID: 1558144344}
 --- !u!1 &1540756759
 GameObject:
   m_ObjectHideFlags: 0
@@ -2834,6 +2835,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555904729}
   m_CullTransparentMesh: 1
+--- !u!1 &1558144343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1558144344}
+  m_Layer: 0
+  m_Name: PooledItems
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1558144344
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558144343}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1599911493
 GameObject:
   m_ObjectHideFlags: 0
@@ -5350,4 +5382,5 @@ SceneRoots:
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 1872722182}
+  - {fileID: 1558144344}
   - {fileID: 110898776}
