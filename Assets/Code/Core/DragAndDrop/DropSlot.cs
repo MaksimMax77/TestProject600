@@ -1,22 +1,24 @@
 using System;
 using System.Collections.Generic;
+using Code.DragAndDrop;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Code.DragAndDrop
+namespace Code.Core.DragAndDrop
 {
     public class DropSlot : MonoBehaviour, IDropHandler
     {
         public event Action<DragItem> DragItemDropped;
         public event Action<DragItem> DragItemRemoved;
         [SerializeField] private Transform _content;
+        [SerializeField] private bool _isInfiniteAmount;
         [SerializeField] private int _elementsMaxAmount = 3;
         private List<DragItem> _draggedItems = new List<DragItem>();
 
         public void OnDrop(PointerEventData eventData)
         {
             var dragItem = eventData.pointerDrag.GetComponent<DragItem>();
-            if (dragItem == null || CheckOccupancy())
+            if (dragItem == null || (!_isInfiniteAmount && CheckOccupancy()))
             {
                 return;
             }
