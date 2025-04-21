@@ -12,4 +12,7 @@
 Проект разделён на несколько сборок RemoteConfigLoad, Ui, Level, Core.
 </pre>
 </div>
+
+## Билд: 
+https://disk.yandex.ru/d/bVeCXhBRolwGPg
  
